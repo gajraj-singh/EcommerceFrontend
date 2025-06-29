@@ -1,144 +1,5 @@
 
 
-// // import React, { useEffect, useState } from 'react';
-
-// // const Home = () => {
-// //   const [products, setProducts] = useState([]);
-
-// //   useEffect(() => {
-// //     fetch(`http://localhost:5000/api/products`)
-// //       .then(res => res.json())
-// //       .then(data => setProducts(data));
-// //   }, []);
-
-// //   return (
-// //     <div style={{ padding: '2rem' }}>
-// //       <h2>Products</h2>
-// //       <div style={{ display: 'grid', gap: 20, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
-// //         {products.map((product) => (
-// //           <div key={product._id} style={{ border: '1px solid #ddd', padding: '1rem' }}>
-// //             <img
-// //               src={`http://localhost:5000/api/products/image/${product._id}`}
-// //               alt={product.name}
-// //               style={{ width: '60%', height: '70%', borderRadius: '10px' }}
-// //             />
-// //             <h3>{product.name}</h3>
-// //             <p>₹{product.price}</p>
-// //             <p style={{ fontSize: '12px', lineHeight: '2.0', marginTop: '20px' }}>{product.description}</p>
-// //           </div>
-// //         ))}
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Home;
-
-// import React, { useEffect, useState } from 'react';
-
-// const Home = () => {
-//   const [products, setProducts] = useState([]);
-
-//   useEffect(() => {
-//     fetch(`http://localhost:5000/api/products`)
-//       .then(res => res.json())
-//       .then(data => setProducts(data));
-//   }, []);
-
-//   return (
-//     <div style={{ padding: '4rem 2rem', background: '#fff' }}>
-//       <h2 style={{
-//         textAlign: 'center',
-//         fontSize: '2.5rem',
-//         fontWeight: '600',
-//         letterSpacing: '1px',
-//         marginBottom: '1rem',
-//         color: '#333'
-//       }}>
-//         LATEST <span style={{ color: '#000' }}>COLLECTIONS</span>
-//       </h2>
-
-//       <p style={{ textAlign: 'center', color: '#666', marginBottom: '3rem', fontSize: '1rem' }}>
-//         Chlothzy’s latest collection is where elegance meets trend. Fashion that speaks your style.
-//       </p>
-
-//       <div style={{
-//         display: 'grid',
-//         gap: '2rem',
-//         gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-//         justifyItems: 'center'
-//       }}>
-//         {products.map((product) => (
-//           <div
-//             key={product._id}
-//             style={{
-//               width: '100%',
-//               maxWidth: '260px',
-//               background: '#fff',
-//               borderRadius: '16px',
-//               boxShadow: '0 2px 15px rgba(0, 0, 0, 0.08)',
-//               overflow: 'hidden',
-//               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-//               cursor: 'pointer'
-//             }}
-//             onMouseEnter={e => {
-//               e.currentTarget.style.transform = 'translateY(-6px)';
-//               e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
-//             }}
-//             onMouseLeave={e => {
-//               e.currentTarget.style.transform = 'translateY(0)';
-//               e.currentTarget.style.boxShadow = '0 2px 15px rgba(0,0,0,0.08)';
-//             }}
-//           >
-//             <img
-//               src={`http://localhost:5000/api/products/image/${product._id}`}
-//               alt={product.name}
-//               style={{
-//                 width: '100%',
-//                 height: '320px',
-//                 objectFit: 'cover',
-//                 transition: 'transform 0.3s ease'
-//               }}
-//             />
-
-//             <div style={{ padding: '1rem' }}>
-//               <h3 style={{
-//                 fontSize: '1rem',
-//                 fontWeight: '500',
-//                 color: '#222',
-//                 marginBottom: '0.5rem'
-//               }}>
-//                 {product.name}
-//               </h3>
-
-//               <p style={{
-//                 fontWeight: '600',
-//                 color: '#093d82',
-//                 fontSize: '1rem',
-//                 marginBottom: '0.5rem'
-//               }}>
-//                 Rs.{product.price}
-//               </p>
-
-//               <p style={{
-//                 fontSize: '0.9rem',
-//                 lineHeight: '1.5',
-//                 color: '#555',
-//                 minHeight: '48px'
-//               }}>
-//                 {product.description.length > 60
-//                   ? product.description.substring(0, 57) + '...'
-//                   : product.description}
-//               </p>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Home;
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -148,7 +9,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/products`)
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);
@@ -164,7 +25,7 @@ const Home = () => {
           {products.map((product) => (
             <div key={product._id} style={styles.card}>
               <img
-                src={`http://localhost:5000/api/products/image/${product._id}`}
+                src={`${import.meta.env.VITE_API_URL}/api/products/image/${product._id}`}
                 alt={product.name}
                 style={styles.cardImg}
               />
